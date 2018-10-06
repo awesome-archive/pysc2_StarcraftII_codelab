@@ -174,7 +174,7 @@ def training_game():
     nb_actions = 12  # Number of actions
  
     model = neural_network_model(input_shape, nb_actions)
-    memory = SequentialMemory(limit=5000, window_length=_WINDOW_LENGTH)
+    memory = SequentialMemory(limit=500000, window_length=_WINDOW_LENGTH)
  
     processor = SC2Proc()
  
