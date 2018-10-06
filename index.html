@@ -86,6 +86,8 @@
         <li>Basic interaction with API</li>
         <li>Creating and training your  Machine Learning agent</li>
         <li>Evaluating how training and evaluating works</li>
+        <li>Train a machine learning agent in GCP</li>
+
 
       </ul>
 
@@ -134,6 +136,14 @@
 
       <img src="pysc2_images/pysc2_1_header.jpg"  style="max-width: 750px" alt="Install requirements">
       <p><small><i>"The stars align"</i> Void Raid Protoss move order unit quote</small> </p>
+
+       <aside class="special">
+        <p>
+        <strong>Note:</strong>  This instalation is linked to a local machine. If you want to
+            run the experiment in the cloud ( recommended for scalability ) you can go to step 9
+        </p>
+      </aside>
+
 
       <h2>Instalation of pySC2</h2>
       <p>This install section has been taken from <a href="https://github.com/deepmind/pysc2" target="_blank" rel="noopener">PySC2</a> documentation.
@@ -198,6 +208,10 @@ mini_games = [  ## This mini-games names should alredy been in your list
       </code></pre>
       </ul>
     <aside class="special">
+
+    <p>Once you type this in your console, a small screen simulating a game should appear,
+    together within a feature layer screen . A random agent is now playing the game, taking
+    random actions .</p>
       <h2>Congratulations!</h2>
       <p>Now you have set up this challenging environment for machine learning research</p>
     </aside>
@@ -373,7 +387,7 @@ In some cases innovations come in the way we think and threat the value function
 
       <p class="checklist">Starcraft II learning environment release consists of 3 subcomponents, 2 of those cited here :  </p>
       <ul>
-        <li><a href="https://github.com/Blizzard/sc2client-proto" target="_blank" rel="noopener">SC II Api</a> . Used for start a game, get observations, take actions and review replays .</li>
+        <li><a href="https://github.com/Blizzard/s2client-proto" target="_blank" rel="noopener">SC II Api</a> . Used for start a game, get observations, take actions and review replays .</li>
         <li><a href="https://github.com/deepmind/pysc2" target="_blank" rel="noopener">pySC2</a> Using SC II Api , pySC2 is a Python environment that wraps the Starcarft II Api to ease the interaction between agents and Starcraft II .
             It defines action and observation specification</li>
       </ul>
@@ -392,7 +406,7 @@ In some cases innovations come in the way we think and threat the value function
           Inside features we must differentiate in between minimap feature layers and screen feature layers. One is looking at the screen and the other is looking at the top bottom left minimap . </p>
       <p>Besides that, it offers as a structured information 10 Tensors with different data with relevant information for the player.</p>
 
-    <img src="pysc2_images/pysc2_feature_layers.png"  style="max-width: 624px" alt="Actions">
+    <center><img src="pysc2_images/pysc2_feature_layers.png"  style="max-width: 624px" alt="Actions"></center>
         <center><p><small>Feature Layer view, initialized with the game</small> </p></center>
 
 
@@ -474,7 +488,7 @@ $ python -m pysc2.bin.agent --map HallucinIce
 
      <p>You should see something like this</p>
 
-      <center><img src="pysc2_images/pysc2_HallucinIceRandom.gif"  style="max-width: 624px" alt="Random Hallucination"></center>
+      <center><img src="pysc2_images/pysc2_HallucinIceRandom.gif"  style="max-width: 524px" alt="Random Hallucination"></center>
 
 
      <p>As you can check, there is nor learning neither strategy on this, as the agent is selecting random actions.
@@ -492,9 +506,9 @@ class RandomAgent(base_agent.BaseAgent):
     return actions.FunctionCall(function_id, args)
       </code></pre>
 
-     <p></p>
-     <p>Basically, the RandomAgent class extends from the base_agent and we define what is doing at each step </p>
-     , in which defines a variable that selects randomly an available action and call it with its arguments at each step</p>
+
+     <p>Basically, the RandomAgent class extends from the base_agent and we define what is doing at each step
+     ,in which defines a variable that selects randomly an available action and call it with its arguments at each step</p>
 
       <h2>Run Scripted Agent</h2>
      <p>Scripted agents are a set of handcrafted rules that help the agents take a strategy
@@ -502,6 +516,7 @@ class RandomAgent(base_agent.BaseAgent):
       <pre><code>
 $ python -m pysc2.bin.agent --map HallucinIce  --agent pysc2.agents.scripted_agent.HallucinIce
       </code></pre>
+
 
     <p>And should see something like this</p>
 
@@ -660,10 +675,12 @@ class HallucinationArchon(base_agent.BaseAgent):
      </p>
       <pre><code>
     # Agent
-    dqn = DQNAgent(model=model, nb_actions=nb_actions, memory=memory, enable_double_dqn=False,
+    dqn = DQNAgent(model=model, nb_actions=nb_actions, memory=memory, enable_double_dqn=True,
+                   enable_dueling_network=True,
                    nb_steps_warmup=500, target_model_update=1e-2, policy=policy,
                    batch_size=150,
-                   processor=processor) ## TODO : Add delta_clip for hubber_loss
+                   processor=processor,
+                   delta_clip=1)
 
     dqn.compile(Adam(lr=.001), metrics=["mae", "acc"])
 
@@ -801,6 +818,68 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
  </google-codelab-step>
 
 
+    <!-- STEP 9 -->
+
+
+
+<google-codelab-step
+      label="Lab : Train in the cloud with a VM instance"
+      step="9"
+      duration="30-forever">
+      <p>
+
+      <img src="pysc2_images/pysc2_9_header.jpg"  style="max-width: 750px" alt="Train in google cloud">
+      <p><small><i>"Hierach?"</i> Talandar Protoss selected order unit quote</small> </p>
+
+
+    <h3>Enable Cloud configuration</h3>
+    <p>You can run the experiment in the cloud using instances. An instance is a virtual
+    machine (VM) hosted on Google´ infrastructure. </p>
+
+      <h3 class="checklist">Follow the steps</h3>
+
+       <h4> 1.Create a GCP project </h4>
+        <p> Go to the <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">google cloud platform console</a>  </p>
+         <h4> 2.Enable billing</h4>
+       <h4> 2. Create a project </h4>
+        <h4> 3. Create a VM Instance </h4>
+        <p>Go to the VM Instances page and <strong>Create an instance</strong> </p>
+      <center><img src="pysc2_images/pysc2_VM_instance.jpg"  style="max-width: 250px" alt="Train in google cloud"></center>
+    <p>For this experiment we will work with a Ubuntu 16.04 LTS with 8 CPUs and 52GB of memory </p>
+     <center><img src="pysc2_images/pysc2_VM_instance2.jpg"  style="max-width: 450px" alt="Train in google cloud"></center>
+    <p>Once the instance is created, go to Disks options and edit the instance.
+    As we might need some extra space due to the requirements of installing the game, edit the size and add
+    some extra space .</p>
+    <p>Once you are there, open the VM instance terminal and follow the following code instructions:</p>
+
+    <p>Download StarCraft II </p>
+    <pre><code>
+$ !wget https://blzdistsc2-a.akamaihd.net/Linux/SC2.4.0.2.zip
+$ !unzip -P iagreetotheeula -oq SC2.4.0.2.zip -d ~
+    </code></pre>
+
+    <p>Download mini-games </p>
+    <pre><code>
+$ !wget –quiet https://github.com/deepmind/pysc2/releases/download/v1.0/mini_games.zip
+$ !unzip -P iagreetotheeula -oq mini_games.zip -d ~/StarCraftII/Maps/
+    </code></pre>
+
+    <p>install requirements  </p>
+<p>Clone the repository  </p>
+    <pre><code>
+$
+    </code></pre>
+
+
+        <li>Evaluating how training and evaluating works</li>
+        <li>Train a machine learning agent in GCP</li>
+
+    <p>If you want to give it a try to train PySC2 agents using google Colab, you can go to this
+    developed during Nvidia workshop in April 2018</p>
+      </ul>
+
+ </google-codelab-step>
+
 
 
     <!-- STEP 9 -->
@@ -852,8 +931,10 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
        <li>[9]</li>
     </ul>
 
-    <h3>Like it ?</h3>
-    <p> Star it on github! </p>
+    <h3>About the Author</h3>
+      <img src="pysc2_images/pysc2_codelab_author_Gema.jpeg"  style="max-width: 50px" alt="Quickstart overview of pySC2">
+    <p> Gema works as a Research Scientist in BBVA Labs </p>
+    <p> You can know more about her work in Github and Twitter </p>
 
 
  </google-codelab-step>
