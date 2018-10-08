@@ -485,12 +485,30 @@ In some cases innovations come in the way we think and threat the value function
 
      <h2>Configuration</h2>
      <p>You can configure all the requirements for getting started in the <a href="https://github.com/deepmind/pysc2" target="_blank" rel="noopener">pysc2</a> official
-         repository or in the step 2 of this Codelab .
+         repository or in the step 2 or step 9 of this Codelab .
 In this section we will test the running environment with the mini-game that we are going to train.</p>
+    <h2>HallucinIce mini-game</h2>
+     <p><strong>Description</strong></p>
+    <p>The mini-game is an imbalanced melee in between Terran and Protoss. The goal is to learn to exploit sentry
+    Hallucination function. The desired beahviour is to make Terran believe they´re fighting a much larger
+    force than anticipated, and ultimately, to make Protoss units win.</p>
 
+
+      <p class="checklist"><strong>Initial State</strong></p>
+      <ul>
+        <li>4 Sentry at left playable size</li>
+        <li>4 Hellions at right playable size</li>
+        <li>2 Reapers at right playable size</li>
+      </ul>
+
+     <p><strong>Reward system</strong></p>
+        <p>Protoss defeated : -10 Terran defeated : +10</p>
+
+     <p><strong>End conditions</strong></p>
+        <p>Time elapsed or Zerg defeated</p>
 
      <h2>Run Random Agent</h2>
-     <p>Open a terminal and type</p>
+     <p>Open a terminal , go to <code>Applications/StarCraftII/pysc2</code>&#160; and type</p>
       <pre><code>
 $ python -m pysc2.bin.agent --map HallucinIce
       </code></pre>
@@ -500,8 +518,8 @@ $ python -m pysc2.bin.agent --map HallucinIce
       <center><img src="pysc2_images/pysc2_HallucinIceRandom.gif"  style="max-width: 524px" alt="Random Hallucination"></center>
 
 
-     <p>As you can check, there is nor learning neither strategy on this, as the agent is selecting random actions.
-         In the pysc2 repository, you might see how a random agent works </p>
+     <p>As you can check, there is nor learning neither strategy on these episodes, as the agent is selecting random actions.
+         Let´s see how a random agent works </p>
 
       <pre><code>
 class RandomAgent(base_agent.BaseAgent):
