@@ -172,17 +172,24 @@
       <p>This codelab will launch an agent from a mini-game made by some community members  during last Blizzcon AI workshop .
       So be sure to download it</p>
       <p><a href="https://github.com/SoyGema/pysc2_StarcraftII_codelab/blob/master/pysc2_codelab_material.zip" target="_blank"><paper-button class="colored" raised><iron-icon icon="file-download"></iron-icon>Download source code</paper-button></a></p>
-
- <p> Go inside the <code>pysc2_codelab_material</code>&#160; folder and type :</p>
+      <p class="checklist">Inside the .zip Codelab material file, you might find</p>
+          <ul class="checklist">
+        <li><strong>HallucinIce.SC2Map:</strong> SC2 mini-game developed during Blizzcon 2017 AI workshop.</li>
+        <li><strong>agent_CNN+LSTM.py:</strong> python agent that we will train in this CodeLab.</li>
+        <li><strong>scripted_agent.py:</strong> python simbolic AI agent developed during Blizzcon 2017 AI workshop.</li>
+        <li><strong>requirements.txt:</strong> requirements for the CodeLab.</li>
+          </ul>
+        <h2>Install requirements</h2>
+ <p class="checklist"> Go inside the <code>pysc2_codelab_material</code>&#160; folder and type :</p>
       <pre><code>
  $   pip install requirements.txt
       </code></pre>
+    <ul>
+    <li><p>Place the scripted_agent.py in <code>Applications/StarCraftII/pysc2/agents</code>&#160;</p></li>
+    <li><p>Place the agent_CNN+LSTM.py in <code>Applications/StarCraftII/pysc2/agents</code>&#160;</p></li>
 
-        <li><p>Place the scripted_agent.py in <code>Applications/StarCraftII/pysc2/agents</code>&#160;</p></li>
-
-
-
-          <h2>Install requirements</h2>
+        <h2>Configure mini-game</h2>
+    </ul>
        <p class="checklist">Once there, follow the instructions : </p>
       <ul>
         <li>Go to <code>pysc2\maps\mini_games.py</code>&#160; and add to mini-games array the following mini-games names</li>
@@ -201,6 +208,8 @@ mini_games = [  ## This mini-games names should alredy been in your list
     "HallucinIce", # 30s <--- NEW NAME
 ]
       </code></pre>
+
+        <li>Place HallucinIce.SC2Map in <code>Applications/StarCraftII/Maps/mini_games</code>&#160;</li>
         <li>Test the environment.
         In your console, you can type the mini-game map name</li>
       <pre><code>
