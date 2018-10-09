@@ -45,7 +45,7 @@ _WINDOW_LENGTH = 1
  
 # Load and save weights for training
  
-LOAD_MODEL = False  # True if the training process is already created
+LOAD_MODEL = True  # True if the training process is already created
 SAVE_MODEL = True
  
 # global variable
