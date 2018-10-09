@@ -24,7 +24,9 @@ from rl.core import Processor
 from rl.callbacks import FileLogger, ModelIntervalCheckpoint
 from rl.agents.dqn import DQNAgent
 from rl.agents.sarsa import SARSAAgent
- 
+from rl.callbacks import Callback, FileLogger
+
+
 # Actions from pySC2 API
  
 FUNCTIONS = actions.FUNCTIONS
@@ -43,7 +45,7 @@ _WINDOW_LENGTH = 1
  
 # Load and save weights for training
  
-LOAD_MODEL = True  # True if the training process is already created
+LOAD_MODEL = False  # True if the training process is already created
 SAVE_MODEL = True
  
 # global variable
@@ -165,7 +167,7 @@ def neural_network_model(input, actions):
  
  
 def training_game():
-    env = Environment(map_name="HallucinIce", visualize=True, game_steps_per_episode=150,
+    env = Environment(map_name="DefeatRoaches", visualize=True, game_steps_per_episode=150,
                       agent_interface_format=features.AgentInterfaceFormat(
                           feature_dimensions=features.Dimensions(screen=64, minimap=32)
                       ))
@@ -174,7 +176,7 @@ def training_game():
     nb_actions = 12  # Number of actions
  
     model = neural_network_model(input_shape, nb_actions)
-    memory = SequentialMemory(limit=500000, window_length=_WINDOW_LENGTH)
+    memory = SequentialMemory(limit=5000, window_length=_WINDOW_LENGTH)
  
     processor = SC2Proc()
  
@@ -200,22 +202,31 @@ def training_game():
                                 write_graph=True, write_images=False)
 
 
+
     # Save the parameters and upload them when needed
- 
-    name = "HallDebbugeed"
+
+    name = "agent"
     w_file = "dqn_{}_weights.h5f".format(name)
     check_w_file = "train_w" + name + "_weights.h5f"
- 
+
     if SAVE_MODEL:
         check_w_file = "train_w" + name + "_weights_{step}.h5f"
- 
+
     log_file = "training_w_{}_log.json".format(name)
 
- 
+
     if LOAD_MODEL:
         dqn.load_weights(w_file)
- 
-    dqn.fit(env, callbacks=[callbacks], nb_steps=1e7, action_repetition=2,
+
+    class Saver(Callback):
+        def on_episode_end(self, episode, logs={}):
+            if episode % 200 == 0:
+                self.model.save_weights(w_file, overwrite=True)
+
+    s = Saver()
+    logs = FileLogger('DQN_Agent_log.csv', interval=1)
+
+    dqn.fit(env, callbacks=[callbacks,s,logs], nb_steps=600, action_repetition=2,
             log_interval=1e4, verbose=2)
  
     dqn.save_weights(w_file, overwrite=True)
