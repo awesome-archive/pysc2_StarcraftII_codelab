@@ -907,12 +907,34 @@ $ !unzip -P iagreetotheeula -oq mini_games.zip -d ~/StarCraftII/Maps/
 $ !wget https://github.com/SoyGema/pysc2_StarcraftII_codelab/blob/master/pysc2_codelab_material.zip
 $ !unzip pysc2_codelab_material.zip
     </code></pre>
+<p>Install Codelab requirements </p>
+    <pre><code>
+$ cd pysc2_codelab_material
+$ pip install requirements.txt
+    </code></pre>
+<p>This should take a while but actually install the libraries needed for the experiment</p>
 
 
-        <li>Evaluating how training and evaluating works</li>
-        <li>Train a machine learning agent in GCP</li>
+    <p>Run the agent </p>
+<p>Go inside the folder and execute the agent in a <strong>nohup</strong> command, that is best suited for long job runs.  </p>
+    <pre><code>
+$ nohup python agent_CNN+LSTM.py > agent_CNN+LSTM.nohup &
+    </code></pre>
+<p>This command should put the agent to train. A Graph folder might appear.</p>
+<p>If you want to visualize how your training is going on, you can write on console</p>
+    <pre><code>
+$ more agent_CNN+LSTM.nohup
+    </code></pre>
 
-    <p>If you want to give it a try to train PySC2 agents using google Colab, you can go to this
+<p>For tensorboard visualization</p>
+<p>Configure a VPC Network within the GCP Platform, ading it to tcp:6006 port</p>
+    <pre><code>
+$ tensorboard --logdir Graph
+    </code></pre>
+
+
+
+    <p>If you want to give it a try to train PySC2 agents using Google Colaboratory tool, you can go to this
     developed during Nvidia workshop in April 2018</p>
       </ul>
 
