@@ -192,7 +192,7 @@
                                             rel="noopener">here</a> documentation and click on the Linux Package
             versions be sure to install versions from 3.16.1 to above .
             Be sure to type the password <strong>‘iagreetotheeula’</strong> linked to the machine learning license . For
-            windows and mac , Install the game as normal from <a href="https://us.battle.net/account/download/"
+            Windows and Mac , Install the game as normal from <a href="https://us.battle.net/account/download/"
                                                                  target="_blank" rel="noopener">Battle.net</a></p>
 
         <h2>Download mini-games and full ladder maps</h2>
@@ -227,8 +227,8 @@
  $   pip install requirements.txt
       </code></pre>
         <ul>
-            <li><p>Place the scripted_agent.py in <code>Applications/StarCraftII/pysc2/agents</code>&#160;</p></li>
-            <li><p>Place the agent_CNN+LSTM.py in <code>Applications/StarCraftII/pysc2/agents</code>&#160;</p></li>
+            <li><p>Place the <code>scripted_agent.py</code>&#160; in <code>Applications/StarCraftII/pysc2/agents</code>&#160;</p></li>
+            <li><p>Place the <code>agent_CNN+LSTM.py</code>&#160; in <code>Applications/StarCraftII/pysc2/agents</code>&#160;</p></li>
 
             <h2>Configure mini-game</h2>
         </ul>
@@ -317,7 +317,7 @@ mini_games = [  ## This mini-games names should already been in your list
         <p>In RL , we trait both prediction and control problems, drained by state-value or action-value function.
             When you go down algorithmically in this challenge, it comes in how you treat the value function and how the
             policy strategy affects to the agent .</p>
-        The Reinforcement Learning problem can be described formally into a Markov decision process or MDP: it describes
+        The Reinforcement Learning problem can be described formally into a Markov Decision Process or MDP: it describes
         an environment for reinforcement learning,
         the surroundings or conditions in which the agent learns or operates.
         The Markov process is a sequence of states with the Markov property ,
@@ -337,9 +337,9 @@ mini_games = [  ## This mini-games names should already been in your list
                 action , and can be deterministic or stochastic .
                 RL taxonomy includes <strong>ON policy algorithms</strong> -learning on the job or <strong>OFF
                     policy</strong> algorithms - learning from other behaviour-
-                Policy ON and OFF algorithms differentiate about how it calculates the value function .
+                Policy ON and OFF algorithms differentiate about how it calculates the Value Function .
                 On-policy algorithms have no memory and v(s) comes from the same policy. In Policy-off algorithms , V(s)
-                comes from another policy .
+                come from another policy .
                 The goal of RL is to find an optimal policy which achieves the maximum expected return from all states.
             </li>
             <li><strong>Model</strong>. Agent´s representation of the environment .
@@ -349,7 +349,7 @@ mini_games = [  ## This mini-games names should already been in your list
         </ul>
 
         <p>There are two main approaches to solving RL problems : Value-function and Policy Search<sup>[fig2]</sup> .
-            There is an hybrid explored recently also known as actor-critic approach </p>
+            There is an hybrid explored during last year, also known as Actor-Critic approach </p>
         <center><img src="pysc2_images/pysc2_RL_policy.gif" style="max-width: 450px" alt="Learning loop"></center>
         <center>
             <p>
@@ -363,6 +363,8 @@ mini_games = [  ## This mini-games names should already been in your list
             it the observations inherited from the actions the agent took.</p>
 
         <h2>The value function </h2>
+
+        <center><img src="pysc2_images/pysc2_value_function.jpg" style="max-width: 450px" alt="Learning loop"></center>
         <p class="checklist">The Value function is a mathematical abstraction that acts as an evaluator of the agent.
             The reinforcement learning taxonomy and creation approach might define itself on how we treat the value
             function.
@@ -410,7 +412,7 @@ mini_games = [  ## This mini-games names should already been in your list
             . </p>
 
 
-        <p>DQN Algorithm <strong>Overview</strong><sup>[fig3]</sup></p>
+        <h3>DQN Algorithm <strong>Overview</strong><sup>[fig3]</sup></h3>
 
         <p>In a high level, the algorithm takes the input as the RGB pixels and gives the output of the value of the
             suitable actions that the agent might take with a given policy .
@@ -427,7 +429,7 @@ mini_games = [  ## This mini-games names should already been in your list
         </center>
 
 
-        <p>DQN Algorithm <strong>optimization</strong> : Target Network , Experience Replay and Hubber Loss</p>
+        <h3>DQN Algorithm <strong>optimization</strong> : Target Network , Experience Replay and Hubber Loss</h3>
 
         <p><strong>Experience Replay</strong>allows training using stored memories from its experience, and avoids to
             forget states that the Neural model hasn´t seen in a while.
@@ -444,7 +446,7 @@ mini_games = [  ## This mini-games names should already been in your list
             For those familiarized with the loss function coming from Neural Networks , it comes to say that it diverges
             into two different implementations.</p>
 
-        <p>DQN <strong>variations</strong>: Double Deep Q-learning with dueling Network Architecture</p>
+        <h3>DQN <strong>variations</strong>: Double Deep Q-learning with dueling Network Architecture</h3>
 
         <p><strong>Double Q-learning</strong>[fig4] is a model-free policy off algorithm can be used at scale to
             successfully reduce the overoptimism inherited from DQN, resulting in more stable and reliable learning.
