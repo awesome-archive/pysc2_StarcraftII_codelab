@@ -14,6 +14,9 @@
     <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="/bower_components/codelab-components/google-codelab-elements.html">
+
+
+
     <link rel="stylesheet"
           href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
     <style>
@@ -21,7 +24,6 @@
         font-family: "Roboto",sans-serif;
         background-color: #F8F9FA;
       }
-
     </style>
 </head>
 <body>
@@ -324,6 +326,12 @@ mini_games = [  ## This mini-games names should already been in your list
         which claims that the future is independent of the past given the present .
         That makes that we only shall need the last state to evaluate the agent.</p>
 
+        <aside class="special">
+            <p>
+                <strong>Note:</strong>The goal of RL is to find an optimal policy which achieves the maximum expected return from all states.
+
+            </p>
+        </aside>
 
         <h2>RL Agents</h2>
         <p class="checklist">Reinforcement learning agents may include one or more of these components <sup>[2]</sup>.
@@ -338,9 +346,8 @@ mini_games = [  ## This mini-games names should already been in your list
                 RL taxonomy includes <strong>ON policy algorithms</strong> -learning on the job or <strong>OFF
                     policy</strong> algorithms - learning from other behaviour-
                 Policy ON and OFF algorithms differentiate about how it calculates the Value Function .
-                On-policy algorithms have no memory and v(s) comes from the same policy. In Policy-off algorithms , V(s)
+                On-policy algorithms have no memory and V(s) comes from the same policy. In Policy-off algorithms , V(s)
                 come from another policy .
-                The goal of RL is to find an optimal policy which achieves the maximum expected return from all states.
             </li>
             <li><strong>Model</strong>. Agent´s representation of the environment .
                 RL taxonomy establish model free and model based agents. Model-based have the knowledge about the
@@ -363,6 +370,7 @@ mini_games = [  ## This mini-games names should already been in your list
             it the observations inherited from the actions the agent took.</p>
 
         <h2>The value function </h2>
+
 
         <center><img src="pysc2_images/pysc2_value_function.jpg" style="max-width: 450px" alt="Learning loop"></center>
         <p class="checklist">The Value function is a mathematical abstraction that acts as an evaluator of the agent.
@@ -448,7 +456,7 @@ mini_games = [  ## This mini-games names should already been in your list
 
         <h3>DQN <strong>variations</strong>: Double Deep Q-learning with dueling Network Architecture</h3>
 
-        <p><strong>Double Q-learning</strong>[fig4] is a model-free policy off algorithm can be used at scale to
+        <p><strong>Double Q-learning</strong></strong><sup>[fig4]</sup> is a model-free policy off algorithm can be used at scale to
             successfully reduce the overoptimism inherited from DQN, resulting in more stable and reliable learning.
             In Double Deep Q learning, two value functions <strong>V(s)</strong> are calculated : one set of weights is
             used to determine the greedy policy - <strong>improvement</strong>- and the other is used to determine its
@@ -457,7 +465,11 @@ mini_games = [  ## This mini-games names should already been in your list
             network. Then the improvement network learns and passes it again to the evaluation network . [10]</p>
 
         <center><img src="pysc2_images/Double_DQN.png" style="max-width: 750px" alt=""></center>
-
+        <center>
+            <p>
+                <small>[fig4] Dueling DQN algorithm</small>
+            </p>
+        </center>
 
         <p><strong>Dueling DQN</strong> helps to generalize learning and the key insight behind the architecture is that
             for many states, it is unnecessary to estimate the value of each action choice. </p>
@@ -580,7 +592,7 @@ mini_games = [  ## This mini-games names should already been in your list
         <h2>Agent Neural Net architectures</h2>
         <p>In DQN , The Neural Networks act as an approximation function to find the Q-values.
             In pySC2 research, DeepMind has tried several Neural Networks architectures , which include the Atari and
-            CNN+LSTM<sup>[fig4]</sup> architectures.
+            CNN+LSTM<sup>[fig5]</sup> architectures.
             Both of them processes <strong>spatial</strong> -screen- and <strong>non-spatial</strong> -vector of
             features- .The difference among the two of them is that Atari combines the Spatial and non-spatial features
             into a flatten layer that process the agent output, unrolling it into a space action policy through
@@ -592,7 +604,7 @@ mini_games = [  ## This mini-games names should already been in your list
                      alt="NeuralNet Architecture"></center>
         <center>
             <p>
-                <small>Full Conv Architecture</small>
+                <small>[fig5] Full Conv Architecture</small>
             </p>
         </center>
 
@@ -710,7 +722,7 @@ class RandomAgent(base_agent.BaseAgent):
       </code></pre>
 
 
-        <p>Basically, the RandomAgent class extends from the base_agent and we define what is doing at each step
+        <p>Basically, the RandomAgent class extends from the <code>base_agent</code>&#160; and we define what is doing at each step
             ,in which defines a variable that selects randomly an available action and call it with its arguments at
             each step</p>
 
@@ -803,7 +815,7 @@ class HallucinationArchon(base_agent.BaseAgent):
         <h3>Agent Overview and DNN Architecture</h3>
 
         <p> We understand the agent as the Learner , the decision maker .
-            There might be many different agents that can be used for this challenge
+            There might be many different agents that can be used for this challenge.
             The goal of the agent is to learn a policy -control strategy- that maximizes the expected return
             -cumulative, discounted reward-.
             The agent uses knowledge of state transitions, of the form (s<sub>t</sub>, a<sub>t</sub>, s<sub>t+1</sub>, r<sub>t+1</sub>)
@@ -811,14 +823,14 @@ class HallucinationArchon(base_agent.BaseAgent):
             In DQN , we use a Neural Network as a function approximator for the Q-values.</p>
         Deep Q Learning is a model-free off policy algorithm that will define the agent.
         If you want to know more about the basis of the agent , jump into The Step 3 and read what is Deep Reinforcement
-        learning?</p>
+        learning.</p>
 
 
         <p>The agent is constructed looking at the feature layers with a CNN-LSTM network.
             This network is an LSTM architecture specifically designed for sequence prediction
             problems with inputs, like images or videos. This architecture involves using Convolutional Neural
             Networks(CNN)
-            layers for feature extraction on input data combined with LSTms to support
+            layers for feature extraction on input data combined with LSTMS to support
             sequence prediction .</p>
 
         <p>In a general approach, this neural net architecture has been used for Activity Recognition,
@@ -876,8 +888,8 @@ class HallucinationArchon(base_agent.BaseAgent):
         <p>The policy helps with the selection of action to take on an environment.
             The linear annealing policy computes a current threshold value and transfers it
             to an inner policy which chooses the action. The threshold value is following a linear
-            function decreasing over time. In this case we use eps-greedy action selection, which
-            means that a random action is selected with probability eps.The value_max and value_min
+            function decreasing over time. In this case we use <code>EpsGreedyQPolicy</code>&#160; action selection, which
+            means that a random action is selected with probability eps.The <code>value_max</code>&#160; and <code>value_min</code>&#160;
             threshold settled regulates how the agent explores the environment and then gradually sticks to
             what it knows . []
         </p>
@@ -1198,12 +1210,10 @@ $ tensorboard --logdir Graph
         <p class="checklist">The following articles, papers, blog articles and conversations were used to make this
             codelab possible
         <ul>
-            <li> [1] DeepMind article Deep Reinforcment Learning
-                https://deepmind.com/blog/deep-reinforcement-learning/
-            </li>
-            <li>[2] DeepMind article</li>
-            <li>[3] keras-rl documentation</li>
-            <li>[4]</li>
+            <li>[1] DeepMind  <a href="https://deepmind.com/blog/deep-reinforcement-learning/" target="_blank" rel="noopener">blog article</a> Deep Reinforcement Learning</li>
+            <li>[2] <a href="" target="_blank" rel="noopener">David Silver´s RL</a> Course </li>
+            <li>[3] Nature Paper </li>
+            <li>[4]keras-rl documentation</li>
             <li>[5] keras-rl Github policy</li>
             <li>[6] Conversation in discord in between</li>
             <li>[7]</li>
