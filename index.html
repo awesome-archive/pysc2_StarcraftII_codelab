@@ -16,7 +16,6 @@
     <link rel="import" href="/bower_components/codelab-components/google-codelab-elements.html">
 
 
-
     <link rel="stylesheet"
           href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
     <style>
@@ -47,7 +46,7 @@
             <img src="pysc2_images/pysc2_0_header.jpg" style="max-width: 750px" alt="Starcraft II Learning environment">
         <h2>Overview</h2>
         <p>
-            In this codelab, you will learn about StarCraft II Learning Environment project and to train your first Deep
+            In this Codelab, you will learn about StarCraft II Learning Environment project and to train your first Deep
             Reinforcement Learning agent. You will also get familiar some of the concepts and frameworks to get to train
             a machine learning agent.</p>
         <aside class="special">
@@ -488,8 +487,8 @@ mini_games = [  ## This mini-games names should already been in your list
 
         <aside class="special">
             <h2>Congratulations!</h2>
-            <p>Now you have passed though the agent and the main concepts of Machine Learning needed for the Codelab
-                Thanks for being around!</p>
+            <p>Now you have passed though the agent and the main concepts of Machine Learning needed for the Codelab.
+                <p>Thanks for being around!</p>
         </aside>
 
 
@@ -836,6 +835,13 @@ class HallucinationArchon(base_agent.BaseAgent):
         <p>In a general approach, this neural net architecture has been used for Activity Recognition,
             Image and video description </p>
 
+        <aside class="special">
+            <p>
+                <strong>Note:</strong> We are implementing Double Deep Q Learning with dueling architecture,
+                A variation from DQN with the main idea of reduce overoptimism and help with generalization.
+
+            </p>
+        </aside>
 
         <pre><code>
  def neural_network_model(input, actions):
@@ -1186,6 +1192,8 @@ $ tensorboard --logdir Graph
                     href="https://deepmind.com/blog/deepmind-and-blizzard-open-starcraft-ii-ai-research-environment/"
                     target="_blank" rel="noopener">DeepMind´s</a> blogposts
             </li>
+            <li> SCII API sc2client-proto <a href="https://github.com/Blizzard/s2client-proto" target="_blank" rel="noopener">repository</a>
+            </li>
             <li>PySC2 <a href="https://github.com/deepmind/pysc2" target="_blank" rel="noopener">repository</a> and
                 paper
             </li>
@@ -1222,11 +1230,15 @@ $ tensorboard --logdir Graph
         </ul>
 
         <h3>About the Author</h3>
-        <img src="pysc2_images/pysc2_codelab_author_Gema.jpeg" style="max-width: 50px"
-             alt="Quickstart overview of pySC2">
-        <p> Gema works as a Data Scientist in BBVA Labs </p>
-        <p> You can know more about her work in <a href="https://github.com/SoyGema" target="_blank" rel="noopener">Github</a>
-            and <a href="https://twitter.com/SoyGema" target="_blank" rel="noopener">Twitter</a></p>
+        <div class="box">
+    <img src="pysc2_images/pysc2_codelab_author_Gema.jpeg"  style="max-width: 50px">
+    <span style="">Gema Parreño.</span>
+    <span style=""><a href="https://github.com/SoyGema" target="_blank" rel="noopener">Github</a> and <a href="https://twitter.com/SoyGema" target="_blank" rel="noopener">Twitter</a>.</span>
+        </div>
+
+        <br> </br>
+        <br> </br>
+
 
 
     </google-codelab-step>
