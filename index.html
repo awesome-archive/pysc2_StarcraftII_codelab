@@ -23,6 +23,8 @@
         font-family: "Roboto",sans-serif;
         background-color: #F8F9FA;
       }
+      paper-button.colored {
+        background-color: #068c43;
     </style>
 </head>
 <body>
@@ -103,7 +105,7 @@
             <li>Basic interaction with StarCraft II API</li>
             <li>Training and modify Machine Learning agent</li>
             <li>Evaluating how training and evaluating works</li>
-            <li>Train a machine learning agent in GCP</li>
+            <li>Train a Machine Learning agent in GCP</li>
 
 
         </ul>
@@ -120,8 +122,8 @@
         <h2 class="checklist">What you need to know</h2>
         <ul class="checklist">
             <li>Basic driving of bash console</li>
-            <li>Basic knowledge of python - data structures, lists, functions, loops -</li>
-            <li>Basic knowledge of Object-oriented programming -classes, methods, decorators -</li>
+            <li>Basic knowledge of Python - data structures, lists, functions, loops -</li>
+            <li>Basic knowledge of object-oriented programming -classes, methods, decorators -</li>
             <li>Conceptual knowledge about Neural Networks</li>
         </ul>
         <aside class="special">
@@ -204,7 +206,7 @@
         </p>
 
         <h2>Download the Codelab material</h2>
-        <p>This Codelab will launch an agent from a mini-game made by some community members during last BlizzCon AI
+        <p>This Codelab will launch an agent from a mini-game made by some community members during 2017 BlizzCon AI
             workshop .
             So be sure to download it</p>
         <p><a href="https://github.com/SoyGema/pysc2_StarcraftII_codelab/blob/master/pysc2_codelab_material.zip"
@@ -214,7 +216,7 @@
                 Download source code
             </paper-button>
         </a></p>
-        <p class="checklist">Inside the .zip Codelab material file, you might find</p>
+        <p class="checklist">Inside the <code>.zip</code>&#160; Codelab material file, you might find</p>
         <ul class="checklist">
             <li><strong>HallucinIce.SC2Map:</strong> SC2 mini-game developed during BlizzCon 2017 AI workshop.</li>
             <li><strong>agent_CNN+LSTM.py:</strong> python agent that we will train in this CodeLab.</li>
@@ -319,7 +321,7 @@ mini_games = [  ## This mini-games names should already been in your list
             When you go down algorithmically in this challenge, it comes in how you treat the value function and how the
             policy strategy affects to the agent .</p>
         The Reinforcement Learning problem can be described formally into a Markov Decision Process or MDP: it describes
-        an environment for reinforcement learning,
+        an environment for Reinforcement Learning,
         the surroundings or conditions in which the agent learns or operates.
         The Markov process is a sequence of states with the Markov property ,
         which claims that the future is independent of the past given the present .
@@ -333,7 +335,7 @@ mini_games = [  ## This mini-games names should already been in your list
         </aside>
 
         <h2>RL Agents</h2>
-        <p class="checklist">Reinforcement learning agents may include one or more of these components <sup>[2]</sup>.
+        <p class="checklist">Reinforcement Learning agents may include one or more of these components <sup>[2]</sup>.
         </p>
         <ul>
             <li><strong>Value function</strong> V(s). Acts as an evaluator and process how much reward we expects to get
@@ -342,7 +344,7 @@ mini_games = [  ## This mini-games names should already been in your list
             </li>
             <li><strong>Policy</strong>: Π . Understood as the Agent´s behaviour function. The policy maps from state to
                 action , and can be deterministic or stochastic .
-                RL taxonomy includes <strong>ON policy algorithms</strong> -learning on the job or <strong>OFF
+                RL taxonomy includes <strong>ON policy algorithms</strong> -learning on the job- or <strong>OFF
                     policy</strong> algorithms - learning from other behaviour-
                 Policy ON and OFF algorithms differentiate about how it calculates the Value Function .
                 On-policy algorithms have no memory and V(s) comes from the same policy. In Policy-off algorithms , V(s)
@@ -367,13 +369,11 @@ mini_games = [  ## This mini-games names should already been in your list
             helps to achieve the goal .
             The agents acts with the environment by executing actions, and the environment acts with the agent by giving
             it the observations inherited from the actions the agent took.</p>
-
         <h2>The value function </h2>
-
-
+        <br> </br>
         <center><img src="pysc2_images/pysc2_value_function.jpg" style="max-width: 450px" alt="Learning loop"></center>
         <p class="checklist">The Value function is a mathematical abstraction that acts as an evaluator of the agent.
-            The reinforcement learning taxonomy and creation approach might define itself on how we treat the value
+            The Reinforcement Learning taxonomy and creation approach might define itself on how we treat the value
             function.
             It is important to underline that there are two kinds of value function :</p>
         <ul>
@@ -384,9 +384,9 @@ mini_games = [  ## This mini-games names should already been in your list
             </li>
         </ul>
 
-        <p>Into Dynamic Programming context, policy search do not need to maintain a value function model, but search
+        <p>In Dynamic Programming context, policy search do not need to maintain a value function model, but search
             for an optimal policy .The process of producing an agent comes in two phases : policy evaluation and policy
-            iteration ( improvement ) . They treat prediction and control problem respectively.[3]
+            iteration ( improvement ) . They treat prediction and control problem respectively.<sup>[2]</sup>
             In some cases innovations come in the way we think and threat the value function.</p>
 
 
@@ -397,7 +397,7 @@ mini_games = [  ## This mini-games names should already been in your list
             , such as vision, using Deep Learning.
             The combination of these approaches, with the goal of achieving human-level performance across many
             challenging domains receive the name of Deep Reinforcement Learning<sup>[3]</sup>.
-            DRL can deal with some of the problems that RL has like the curse of dimensionality [6] .In Deep
+            DRL can deal with some of the problems that DL has like the curse of dimensionality<sup>[6]</sup>.In Deep
             Reinforcement learning, we use Neural Networks act as function approximator for solving the problem of
             finding optimal action-value functions ( Q -table ).</p>
 
@@ -407,11 +407,11 @@ mini_games = [  ## This mini-games names should already been in your list
             </p>
         </aside>
 
-        <p>[6]In general, DRL is based on training deep neural networks to aproximate the optimal policy Π, and/or the
+        <p><sup>[4]</sup>sup>In general, DRL is based on training deep neural networks to aproximate the optimal policy Π, and/or the
             optimal value functions V(s), Q and A .
             However, deep Q-networks are one way to solve deep RL problem . Another state of the art algorithm , A3C,
-            introducing methods based on asynchronous RL.
-            Video games may be an interesting challenge, but learning how to play them is not the end goal of DRL [4] ,
+            introduces methods based on asynchronous RL.</p>
+        <p>Video games may be an interesting challenge, but learning how to play them is not the end goal of DRL <sup>[4]</sup>,
             as the main goal is the vision of creating systems that are capable of learning how to adapt in the real
             world .
             In this Codelab, we dig into a DRL agent for getting started with the machine learning challenge. Having
@@ -438,14 +438,14 @@ mini_games = [  ## This mini-games names should already been in your list
 
         <h3>DQN Algorithm <strong>optimization</strong> : Target Network , Experience Replay and Hubber Loss</h3>
 
-        <p><strong>Experience Replay</strong>allows training using stored memories from its experience, and avoids to
+        <p><strong>Experience Replay</strong> allows training using stored memories from its experience, and avoids to
             forget states that the Neural model hasn´t seen in a while.
             The idea behind experience replay consists in : at each Q-learning iteration, you play one step in the game,
             but instead of updating the model based
             on that step, you add the information from the step you took to a memory and then make a batch sample of
-            that memory for training . [3]
+            that memory for training<sup>[3]</sup>.
 
-            The <strong>Target Network</strong> brings stability to learning [7] . Every a number of iterations, we will
+            The <strong>Target Network</strong> brings stability to learning. Every a number of iterations, we will
             make a copy of the Q-Network and use it to compute the target instead of the current Q-network.
 
             <strong>Hubber loss</strong> comes to stabilize learning in short and long term, as this function os
@@ -455,13 +455,13 @@ mini_games = [  ## This mini-games names should already been in your list
 
         <h3>DQN <strong>variations</strong>: Double Deep Q-learning with dueling Network Architecture</h3>
 
-        <p><strong>Double Q-learning</strong></strong><sup>[fig4]</sup> is a model-free policy off algorithm can be used at scale to
+        <><strong>Double Q-learning</strong></strong><sup>[fig4]</sup> is a model-free policy off algorithm can be used at scale to
             successfully reduce the overoptimism inherited from DQN, resulting in more stable and reliable learning.
             In Double Deep Q learning, two value functions <strong>V(s)</strong> are calculated : one set of weights is
             used to determine the greedy policy - <strong>improvement</strong>- and the other is used to determine its
             value -<strong>evaluation</strong>.
             In this case, the evaluation network trains and from time to time it passes the weights to the improvement
-            network. Then the improvement network learns and passes it again to the evaluation network . [10]</p>
+            network. Then the improvement network learns and passes it again to the evaluation network<sup>[5]</sup>.</p>
 
         <center><img src="pysc2_images/Double_DQN.png" style="max-width: 750px" alt=""></center>
         <center>
@@ -474,13 +474,13 @@ mini_games = [  ## This mini-games names should already been in your list
             for many states, it is unnecessary to estimate the value of each action choice. </p>
         Besides, it decouples the idea of action-value <strong>Q(s,a)</strong> function into state-value function
         <strong>V(s)</strong> and advantage function <strong>A(s,a)</strong>, which leads to better policy evaluation,
-        and has shown good results [11] , shining in attention and focus.</p>
+        and has shown good results <sup>[7]</sup>, shining in attention and focus.</p>
         <p>The dueling network has two streams to separately estimate scalar state-value and the advantages for each
             action: a module implements an equation - non trivial- to combine them.</p>
 
         <aside class="special">
             <p>
-                <strong>Note</strong> The key ideas for this architecture are : reduce overoptimism and help with
+                <strong>Note</strong> We use DQN architecture and Double Deep Q learning with dueling architecture for a reason : the key ideas for this architecture are reduce overoptimism and help with
                 generalization.
             </p>
         </aside>
@@ -626,7 +626,7 @@ mini_games = [  ## This mini-games names should already been in your list
             Some thoughts may led you to think that mini-games are only useful if the knowledge is portable of a larger
             AI game
             , but it really depends on your goal. There is still room for great mini-games to come up with interesting
-            nested problems for both micro and macro in SC2.[8]</p>
+            nested problems for both micro and macro in SC2.<sup>[8]</sup></p>
 
         <h2>Results</h2>
 
@@ -833,7 +833,7 @@ class HallucinationArchon(base_agent.BaseAgent):
             sequence prediction .</p>
 
         <p>In a general approach, this neural net architecture has been used for Activity Recognition,
-            Image and video description </p>
+            Image and video description<sup>[9]</sup> </p>
 
         <aside class="special">
             <p>
@@ -897,7 +897,7 @@ class HallucinationArchon(base_agent.BaseAgent):
             function decreasing over time. In this case we use <code>EpsGreedyQPolicy</code>&#160; action selection, which
             means that a random action is selected with probability eps.The <code>value_max</code>&#160; and <code>value_min</code>&#160;
             threshold settled regulates how the agent explores the environment and then gradually sticks to
-            what it knows . []
+            what it knows<sup>[10]</sup>.
         </p>
         <pre><code>
     # Agent
@@ -913,21 +913,21 @@ class HallucinationArchon(base_agent.BaseAgent):
       </code></pre>
 
         <p>The keras-rl DQNAgent class that calls the agent
-            The <strong>model</strong> refers to the Neural Network coded above , so if you change the model, you can
+            The <code>model</code>&#160; refers to the Neural Network coded above , so if you change the model, you can
             have different neural networks as an approximation function,
-            the <strong>nb_actions</strong> take the actions available for the agent, that
+            the <code>nb_actions</code>&#160; take the actions available for the agent, that
             are printed when you run the agent in the console.
-            The <strong>target_model_update</strong> and <strong>delta_clip</strong> parameters
+            The <code>target_model_update</code>&#160; and <code>delta_clip</code>&#160; parameters
             related to optimization and stable learning of Deep Reinforcement learning: target model update will tell us
             how oftenly the weights will be transferred to the memory. Delta_clip parameter refers
             to Huber loss implementation. </p>
 
-        <p>Another callbacks like Tensorboard are added in order to visualize the learning.</p>
+        <p>Another callbacks like Tensorboard are added in order to visualize the Graph and useful metrics.</p>
 
         <p>DQN Algorithm has its own challenges . In keras-rl library you can implement in a
             straightforward way Replay memory, target Network and Huber loss by hyperparameters.
-            For further evolutions and variations of DQN, you can study Double Deep Q Learning, Dueling Q-Learning
-            and Rainbow algorithm</p>
+            For further evolutions and variations of DQN, you can study and implement
+            Rainbow algorithm</p>
 
         </p>
         <aside class="special">
@@ -1029,7 +1029,7 @@ $ python -m pysc2.bin.agent --map DefeatWhatever
             strategy but still use a Neural Network for function approximation.
 
             The trade-off between exploration and exploitation is challenging and an on-going
-            research topic. A recommended approach by keras-rl authors is Boltzmann-style exploration [3] , so if you
+            research topic. A recommended approach by keras-rl authors is Boltzmann-style exploration<sup>[10]</sup>, so if you
             would like,
             give it a try and feel free to share your results !
 
@@ -1155,10 +1155,12 @@ $ tensorboard --logdir Graph
     </code></pre>
 
 
-            <p>If you want to give it a try to train PySC2 agents using Google Colaboratory tool, you can go to this
+            <p>If you want to give it a try to train PySC2 agents using <a href="https://medium.com/@paul.steven.conyngham/how-to-get-blizzard-google-deepminds-pysc2-working-for-free-on-colabs-be2e68f18893" target="_blank" rel="noopener">Colaboratory</a> tool, you can go to this
                 developed during Nvidia workshop in April 2018</p>
             </ul>
 
+        <br> </br>
+        <br> </br>
     </google-codelab-step>
 
 
@@ -1220,13 +1222,14 @@ $ tensorboard --logdir Graph
         <ul>
             <li>[1] DeepMind  <a href="https://deepmind.com/blog/deep-reinforcement-learning/" target="_blank" rel="noopener">blog article</a> Deep Reinforcement Learning</li>
             <li>[2] <a href="" target="_blank" rel="noopener">David Silver´s RL</a> Course </li>
-            <li>[3] Nature Paper </li>
-            <li>[4]keras-rl documentation</li>
-            <li>[5] keras-rl Github policy</li>
-            <li>[6] Conversation in discord in between</li>
-            <li>[7]</li>
-            <li>[8] CNN+ LSTM ## Quora https://www.quora.com/How-does-the-CNN-LSTM-model-work</li>
-            <li>[9]</li>
+            <li>[3] Human-level control through Deep Reinforcement Learning <a href="https://www.nature.com/articles/nature14236" target="_blank" rel="noopener">Nature Paper </a>. </li>
+            <li>[4] A Brief <a href="https://arxiv.org/pdf/1708.05866.pdf" target="_blank" rel="noopener">Survey</a> of Deep Reinforcement Learning</li>
+            <li>[5] Deep Reinforcement Learning with Double Q-learning<a href="https://arxiv.org/abs/1509.06461" target="_blank" rel="noopener">paper</a> </li>
+            <li>[6] keras-rl Github policy</li>
+            <li>[7] Dueling Network Architectures for Deep Reinforcement Learning <a href="http://proceedings.mlr.press/v48/wangf16.pdf" target="_blank" rel="noopener">paper</a></li>
+            <li>[8] SC2 AI Discord conversation during September 2018</li>
+            <li>[9] CNN+LSTM <a href="https://www.quora.com/How-does-the-CNN-LSTM-model-work" target="_blank" rel="noopener">Quora</a> </li>
+            <li>[10] keras-rl documentation</li>
         </ul>
 
         <h3>About the Author</h3>
