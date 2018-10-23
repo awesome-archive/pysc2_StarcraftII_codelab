@@ -392,14 +392,16 @@ mini_games = [  ## This mini-games names should already been in your list
 
         <h2>What is Deep Reinforcement Learning?</h2>
         <p>Reinforcement Learning is an area of Machine Learning based on mimicking the human way of
-            learning<sup>[1]</sup>.
+            learning<sup>[1]</sup>. Deep learning is enabling reinforcement learning to scale decision-making to problems
+            that were previously intractable, specially those with settings with high-dimensional state and action spaces.
             We will see later on that agents from pySC2 construct and learn their own knowledge directly from raw inputs
             , such as vision, using Deep Learning.
             The combination of these approaches, with the goal of achieving human-level performance across many
             challenging domains receive the name of Deep Reinforcement Learning<sup>[3]</sup>.
-            DRL can deal with some of the problems that DL has like the curse of dimensionality<sup>[6]</sup>.In Deep
-            Reinforcement learning, we use Neural Networks act as function approximator for solving the problem of
-            finding optimal action-value functions ( Q -table ).</p>
+            DRL can deal with some of the problems that DL has like the curse of dimensionality<sup>[6]</sup>.
+            One of the driving forces behind DRL is the vision of creating systems that are capable of learning how to
+            adapt in the real world. It seems likely that in the future, DRL will be an important component in constructing
+            general AI systems.</p>
 
         <aside class="special">
             <p>
@@ -407,7 +409,7 @@ mini_games = [  ## This mini-games names should already been in your list
             </p>
         </aside>
 
-        <p><sup>[4]</sup>In general, DRL is based on training deep neural networks to aproximate the optimal policy Π, and/or the
+        <p><sup>[4]</sup>In general, DRL is based on training deep neural networks to approximate the optimal policy Π, and/or the
             optimal value functions V(s), Q and A .
             However, deep Q-networks are one way to solve deep RL problem . Another state of the art algorithm , A3C,
             introduces methods based on asynchronous RL.</p>
@@ -1043,7 +1045,7 @@ $ python -m pysc2.bin.agent --map DefeatWhatever
             you can download <a href="https://drive.google.com/file/d/0B6TLO16TqWxpUjRsWWdsSEU3dFE/view" target="_blank"
                                 rel="noopener">here</a>
 
-            You can test your own mini-game, but this is what happens when HallucinIce mini-game was tested</p>
+            You can test your own mini-game, but this is what happens when HallucinIce mini-game was tested with A3C:</p>
 
         <center><img src="pysc2_images/pysc2_HallucinICEA3C.gif" style="max-width: 300px"
                      alt="Quickstart overview of pySC2"></center>
@@ -1052,7 +1054,7 @@ $ python -m pysc2.bin.agent --map DefeatWhatever
             suitable
             for all the goals.
 
-            Watch the results on A3C on HallucinIce mini-game, in which the agent learns to hide and go nothing
+
         </p>
 
     </google-codelab-step>
