@@ -29,10 +29,14 @@ Train a Machine Learning agent in GCP
 
 ## What you'll need
 A computer connected to the internet with Python3 installed
-The library pySC2 installed
-Starcraft II game -no license required-
-keras
-keras-rl
+
+-The library pySC2 installed
+
+-Starcraft II game -no license required-
+
+-keras
+
+-keras-rl
 
 ## What you need to know
 Basic driving of bash console
@@ -45,3 +49,8 @@ Thanks to :
 -[AbdonRD](https://github.com/abdonrd)
 
 -[Flipper83](https://github.com/flipper83)
+
+
+## Help needed
+
+Design a container image for the codelab
