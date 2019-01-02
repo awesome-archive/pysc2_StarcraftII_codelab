@@ -50,6 +50,14 @@ Thanks to :
 
 -[Flipper83](https://github.com/flipper83)
 
+# Useful resources
+
+[pysc2 repository](https://github.com/deepmind/pysc2)
+
+[pysc2 paper](https://arxiv.org/abs/1708.04782)
+
+
+
 
 ## Help needed
 
