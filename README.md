@@ -12,7 +12,7 @@
 ![alt tag](https://github.com/SoyGema/pysc2_StarcraftII_codelab/blob/master/pysc2_images/pysc2_3_header.jpg)
 
 
-# pysc2_StarcraftII_codelab
+# pysc2 StarcraftII codelab
 
 Codelab for Starcraft II pysc2 machine learning research 
 You can see the current development [here](https://soygema.github.io/starcraftII_machine_learning/#0)
@@ -50,7 +50,19 @@ Thanks to :
 
 -[Flipper83](https://github.com/flipper83)
 
+# Useful resources
 
-## Help needed
+[pysc2 repository](https://github.com/deepmind/pysc2)
+
+[pysc2 paper](https://arxiv.org/abs/1708.04782)
+
+## More StarCraft II explorations
+
+[StarCraftII data analysis from replays](https://github.com/SoyGema/Starcraft_2_Data_Analysis)
+
+[StarCraftII mini-games and other agents](https://github.com/SoyGema/Startcraft_pysc2_minigames)
+
+
+## Help wanted
 
 Design a container image for the codelab
